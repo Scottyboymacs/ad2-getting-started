@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Movie #<%= @the_movie.id %> details
+      Movie #<%= @movie.id %> details
     </h1>
 
     <div>
@@ -10,9 +10,18 @@
           Go back
         </a>
       </div>
-
+</div>
+    <a href="/movies/new">
+    Add a movie 
+          </a>
+          </div>
+</div>
+    <a href="/movies/:id/edit">
+    Edit this Movie 
+          </a>
+</div>
       <div>
-        <a href="/movies/<%= @the_movie.id %>" data-method="delete">
+        <a href="/movies/<%= @movie.id %>" data-method="delete">
           Delete movie
         </a>
       </div>
@@ -23,35 +32,35 @@
         Title
       </dt>
       <dd>
-        <%= @the_movie.title %>
+        <%= @movie.title %>
       </dd>
 
       <dt>
         Description
       </dt>
       <dd>
-        <%= @the_movie.description %>
+        <%= @movie.description %>
       </dd>
 
       <dt>
         Released
       </dt>
       <dd>
-        <%= @the_movie.released %>
+        <%= @movie.released %>
       </dd>
 
       <dt>
         Created at
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_movie.created_at) %> ago
+        <%= time_ago_in_words(@movie.created_at) %> ago
       </dd>
 
       <dt>
         Updated at
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_movie.updated_at) %> ago
+        <%= time_ago_in_words(@movie.updated_at) %> ago
       </dd>
     </dl>
   </div>
@@ -66,7 +75,7 @@
       Edit movie
     </h2>
 
-    <form action="/movies/<%= @the_movie.id %>"  method="post" >
+    <form action="/movies/<%= @movie.id %>"  method="post" >
       <input type="text" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="text" name="_method" value="patch">
       <div>
@@ -74,7 +83,7 @@
           Title
         </label>
 
-        <input type="text" id="title_box" name="query_title" value="<%= @the_movie.title %>">
+        <input type="text" id="title_box" name="query_title" value="<%= @movie.title %>">
       </div>
 
       <div>
@@ -82,11 +91,11 @@
           Description
         </label>
 
-        <textarea id="description_box" name="query_description"><%= @the_movie.description %></textarea>
+        <textarea id="description_box" name="query_description"><%= @movie.description %></textarea>
       </div>
 
       <div>
-        <input type="checkbox" id="released_box" name="query_released" value="1" <%= "checked" if @the_movie.released %>>
+        <input type="checkbox" id="released_box" name="query_released" value="1" <%= "checked" if @movie.released %>>
 
         <label for="released_box">
             Released
